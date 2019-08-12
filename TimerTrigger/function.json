@@ -1,11 +1,18 @@
 {
-  "scriptFile": "__init__.py",
+  "scriptFile": "main.py",
   "bindings": [
     {
       "name": "mytimer",
       "type": "timerTrigger",
       "direction": "in",
-      "schedule": "0 */5 * * * *"
+      "schedule": "0 */1 * * * *"
+    },
+    {
+      "name": "blobout",
+      "type": "blob",
+      "direction": "out",
+      "path": "output/testme.json",
+      "connection": "HOBO_MAIN_STORAGE_CREDENTIALS"
     }
   ]
 }

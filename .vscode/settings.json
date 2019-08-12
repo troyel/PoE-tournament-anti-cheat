@@ -4,5 +4,6 @@
     "azureFunctions.projectLanguage": "Python",
     "azureFunctions.projectRuntime": "~2",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "func: pack"
+    "azureFunctions.preDeployTask": "func: pack",
+    "python.pythonPath": "C:\\Users\\HTN\\Anaconda3\\python.exe"
 }
