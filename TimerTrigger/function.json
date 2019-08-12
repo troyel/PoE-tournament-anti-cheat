@@ -11,7 +11,7 @@
       "name": "blobout",
       "type": "blob",
       "direction": "out",
-      "path": "output/testme.json",
+      "path": "output/{name}",
       "connection": "HOBO_MAIN_STORAGE_CREDENTIALS"
     }
   ]

@@ -18,17 +18,7 @@ import time
 import json
 
 
-def main(mytimer: func.TimerRequest) -> None:
-    utc_timestamp = datetime.datetime.utcnow().replace(
-        tzinfo=datetime.timezone.utc).isoformat()
-
-    if mytimer.past_due:
-        logging.info('The timer is past due!')
-
-    logging.info('Python timer trigger function ran at %s', utc_timestamp)
-
-
-def all_chars_from_ladder(mytimer: func.TimerRequest, url, dump=False):
+def all_chars_from_ladder(url, dump=False):
     def get_total_and_time():
         params = {'offset': 0, 'limit': 1}
         # TODO: Be nice and do some fallback stuff
@@ -69,8 +59,22 @@ def all_chars_from_ladder(mytimer: func.TimerRequest, url, dump=False):
     return all_chars_
 
 
-URL = "http://api.pathofexile.com/ladders/Slippery Hobo League (PL5357)"
-responce = all_chars_from_ladder(URL, dump = True)
 
-print(all_chars_from_ladder)
+
+
+
+def main(mytimer: func.TimerRequest, blobout: func.Out[str]) -> None:
+    utc_timestamp = datetime.datetime.utcnow().replace(
+        tzinfo=datetime.timezone.utc).isoformat()
+
+    if mytimer.past_due:
+        logging.info('The timer is past due!')
+    
+    URL = "http://api.pathofexile.com/ladders/Slippery Hobo League (PL5357)"
+    responce = all_chars_from_ladder(URL, dump = False)
+
+    blobout.set(responce)
+    print(all_chars_from_ladder)
+
+    logging.info('Python timer trigger function ran at %s', utc_timestamp)
 
