@@ -9,6 +9,7 @@ Uses ladder, character and passive api from GGG
 import datetime
 import logging
 import importlib
+import typing
 
 import azure.functions as func
 import sys
@@ -64,7 +65,7 @@ def all_chars_from_ladder(url, dump=False):
 
 
 
-def main(mytimer: func.TimerRequest, blobout: func.Out[str]) -> None:
+def main(mytimer: func.TimerRequest, blobout: func.Out[str], msg: func.Out[typing.List[str]]) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
         tzinfo=datetime.timezone.utc).isoformat()
 
@@ -73,8 +74,18 @@ def main(mytimer: func.TimerRequest, blobout: func.Out[str]) -> None:
     
     URL = "http://api.pathofexile.com/ladders/Slippery Hobo League (PL5357)"
     responce = all_chars_from_ladder(URL, dump = False)
+    
+    length = len(responce)
+    
+    newlist = []
+
+    for item in responce:
+        newlist.append(str(item['account']['name'])+";"+str(item['character']['name']))
+    
+    msg.set(newlist)
 
     blobout.set(json.dumps(responce))
-    print(all_chars_from_ladder)
+    print("Saved json response of all characters to BLOB")
     
+
     logging.info('Python timer trigger function ran at %s', utc_timestamp)

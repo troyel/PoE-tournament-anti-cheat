@@ -5,13 +5,21 @@
       "name": "mytimer",
       "type": "timerTrigger",
       "direction": "in",
-      "schedule": "0 */1 * * * *"
+      "schedule": "0 5 * * * *",
+      "runOnStartup": "true"
     },
     {
       "name": "blobout",
       "type": "blob",
       "direction": "out",
-      "path": "output/characters/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/{datetime:yyyyMMddss}extract.json",
+      "path": "output/characters/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/{datetime:yyyyMMddHHmm}extract.json",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "msg",
+      "type": "queue",
+      "direction": "out",
+      "queueName": "outqueue",
       "connection": "AzureWebJobsStorage"
     }
   ]
