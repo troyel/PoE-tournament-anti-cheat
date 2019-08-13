@@ -80,7 +80,7 @@ def main(mytimer: func.TimerRequest, blobout: func.Out[str], msg: func.Out[typin
     newlist = []
 
     for item in responce:
-        newlist.append(str(item['account']['name'])+";"+str(item['character']['name']))
+        newlist.append(str(item['rank'])+";"+str(item['account']['name'])+";"+str(item['character']['name']))
     
     msg.set(newlist)
 

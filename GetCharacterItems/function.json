@@ -1,0 +1,19 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "queueTrigger",
+      "direction": "in",
+      "name": "hero",
+      "queueName": "outqueue",
+      "connection":"AzureWebJobsStorage"
+    },
+    {
+      "name": "blobout",
+      "type": "blob",
+      "direction": "out",
+      "path": "output/items/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/items-{rand-guid}-{datetime:yyyyMMddHHmm}.json",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
