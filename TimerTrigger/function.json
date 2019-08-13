@@ -11,8 +11,8 @@
       "name": "blobout",
       "type": "blob",
       "direction": "out",
-      "path": "output/{name}",
-      "connection": "HOBO_MAIN_STORAGE_CREDENTIALS"
+      "path": "output/characters/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/{datetime:yyyyMMddss}extract.json",
+      "connection": "AzureWebJobsStorage"
     }
   ]
 }

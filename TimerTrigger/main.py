@@ -8,15 +8,16 @@ Uses ladder, character and passive api from GGG
 
 import datetime
 import logging
+import importlib
 
 import azure.functions as func
-import azure.storage.queue
- 
+import sys
 import gzip
 import requests
 import time
 import json
 
+importlib.reload(sys.modules['azure'])
 
 def all_chars_from_ladder(url, dump=False):
     def get_total_and_time():
@@ -73,8 +74,7 @@ def main(mytimer: func.TimerRequest, blobout: func.Out[str]) -> None:
     URL = "http://api.pathofexile.com/ladders/Slippery Hobo League (PL5357)"
     responce = all_chars_from_ladder(URL, dump = False)
 
-    blobout.set(responce)
+    blobout.set(json.dumps(responce))
     print(all_chars_from_ladder)
-
+    
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
-
