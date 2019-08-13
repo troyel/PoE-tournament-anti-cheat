@@ -11,7 +11,7 @@
       "name": "blobout",
       "type": "blob",
       "direction": "out",
-      "path": "output/characters/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/{datetime:yyyyMMddHHmm}extract.json",
+      "path": "output/characters/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/characters-{datetime:yyyyMMddHHmm}.json",
       "connection": "AzureWebJobsStorage"
     },
     {
