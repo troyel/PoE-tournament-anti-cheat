@@ -129,3 +129,7 @@ appsettings.json
 local.settings.json
 .python_packages
 AzFunctionApp.zip
+GetCharacterItems/debug2.py
+GetCharacterItems/debug.py
+GetCharacterItems/proxies.py
+GetCharacterItems/debug.py
