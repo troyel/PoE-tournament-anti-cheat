@@ -12,7 +12,7 @@
       "name": "blobout",
       "type": "blob",
       "direction": "out",
-      "path": "output/items/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/items-{rand-guid}-{datetime:yyyyMMddHHmm}.json",
+      "path": "output/items/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/{datetime:HH}/items-{rand-guid}-{datetime:yyyyMMddHHmm}.json",
       "connection": "AzureWebJobsStorage"
     }
   ]

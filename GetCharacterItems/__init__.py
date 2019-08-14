@@ -21,7 +21,7 @@ def get_hero_items(rank,account,name):
 
     param = {'accountName': account, 'character': name}
 
-    time.sleep(1)
+    time.sleep(1.25)
 
     hero_object['equiped'] = requests.get(url=url_get_items, params=param).json()
     
@@ -50,9 +50,9 @@ def main(hero: func.QueueMessage, blobout: func.Out[str]):
 
     hero_object = get_hero_items(quelist[0], quelist[1], quelist[2])
 
-    if hero_object:
-        blobout.set(json.dumps(hero_object))
+    if hero_object['equiped']['error'] :
+        raise Exception(json.dumps(hero_object['equiped']['error']))
     else:
-        print('Hero Object Empty - likely HTTP API FAIL')
-
+        blobout.set(json.dumps(hero_object))
+        
     logging.info(result)

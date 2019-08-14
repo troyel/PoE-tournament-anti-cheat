@@ -5,13 +5,13 @@
       "name": "mytimer",
       "type": "timerTrigger",
       "direction": "in",
-      "schedule": "0 5 * * * *"
+      "schedule": "0 40 * * * *"
     },
     {
       "name": "blobout",
       "type": "blob",
       "direction": "out",
-      "path": "output/characters/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/characters-{datetime:yyyyMMddHHmm}.json",
+      "path": "output/characters/{datetime:yyyy}/{datetime:MM}/{datetime:dd}/{datetime:HH}/characters-{datetime:yyyyMMddHHmm}.json",
       "connection": "AzureWebJobsStorage"
     },
     {
